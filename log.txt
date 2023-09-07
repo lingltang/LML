@@ -1,0 +1,26 @@
+
+F:\Code\PythonBasic\teach>git add . 
+
+F:\Code\PythonBasic\teach>git commit -m 'ÊµÏÖ»ù´¡torchÍøÂç' 
+[master 1b4c243] 'å®žçŽ°åŸºç¡€torchç½‘ç»œ'
+ 6 files changed, 26121 insertions(+)
+ create mode 100644 tx/02_nlp/RecommendedAlgorithm/basicalgorithm.ipynb
+ create mode 100644 tx/02_nlp/basic/dataAnalzy.py
+ create mode 100644 tx/02_nlp/data/DryBeanDataset/Dry_Bean_Dataset.arff
+ create mode 100644 tx/02_nlp/data/DryBeanDataset/Dry_Bean_Dataset.txt
+ create mode 100644 tx/02_nlp/data/DryBeanDataset/Dry_Bean_Dataset.xlsx
+ create mode 100644 tx/02_nlp/data/onlineShop/online_shoppers_intention.csv
+
+F:\Code\PythonBasic\teach>git status 
+On branch master
+Your branch is ahead of 'netML/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+F:\Code\PythonBasic\teach>git push netML master 
