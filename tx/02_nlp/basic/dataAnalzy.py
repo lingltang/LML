@@ -6,12 +6,14 @@ class AnalyzeData:
         self.data = data
         self.handname = self._loadData(handName,[])
         self.data_df = pd.read_csv(parameter['filepath'],sep=",")
-        # 解析数据
+        # 预处理数据
         #self.data = self.feature_process()
 
+    # 预处理
     def feature_process(self):
         pass
 
+    # 查看数据基本信息
     def seeData(self, headNum = 5):
         print("="*50,'数据大小',"="*50)
         print(self.data_df.shape)
@@ -21,8 +23,8 @@ class AnalyzeData:
         print(self.data_df.head(headNum))
         print("="*50,'各列数据类型',"="*50)
         print(self.data_df.dtypes)
-        print("="*50,'各列是否存在空值',"="*50)
-        print(self.data_df.isnull)
+        # for k in self.data_df.keys():
+        #     print(len(self.data_df[k].value_counts()))
 
 
 
