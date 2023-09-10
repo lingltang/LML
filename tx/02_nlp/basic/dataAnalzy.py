@@ -23,8 +23,10 @@ class AnalyzeData:
         print(self.data_df.head(headNum))
         print("="*50,'各列数据类型',"="*50)
         print(self.data_df.dtypes)
-        # for k in self.data_df.keys():
-        #     print(len(self.data_df[k].value_counts()))
+        print("="*50,'各列是否存在空值',"="*50)
+        for k in self.data_df.keys():
+            if None in self.data_df[k].values:
+                print(self.data_df[k].value_counts().keys)
 
 
 
