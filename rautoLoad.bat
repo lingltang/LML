@@ -1,1 +1,1 @@
-autoLoad.bat %1 > log.txt
+autoLoad.bat %1
