@@ -45,7 +45,8 @@ def training():
 
     # 定义可视化输出
     writer = SummaryWriter(output_dir,'summary')
-    model = common.SimpleNetWork(vocab_size=len(word_2_index),embedding_size=128,n_class=2)
+    # model = common.SimpleNetWork(vocab_size=len(word_2_index),embedding_size=128,n_class=2)
+    model = common.LstmNetWork(vocab_size=len(word_2_index), embedding_size=128, n_class=2)
     loss_fn = nn.CrossEntropyLoss()
     train_op = optim.SGD(params=model.parameters(),lr=lr)
     acc_fn = common.MetricAccuracy()
@@ -56,7 +57,7 @@ def training():
 
     # 3. 模型的训练
     best_eval_acc = None
-    total_epochs = 100
+    total_epochs = 10
     train_step, test_step = 0, 0
     for epoch in range(total_epochs):
         # 模型训练
@@ -117,7 +118,8 @@ def to_jit_model(path,output_dir):
     original_model = torch.load(path)
     word_2_index = original_model['word2index']
 
-    model = common.SimpleNetWork(vocab_size=len(word_2_index), embedding_size=128, n_class=2)
+    # model = common.SimpleNetWork(vocab_size=len(word_2_index), embedding_size=128, n_class=2)
+    model = common.LstmNetWork(vocab_size=len(word_2_index), embedding_size=128, n_class=2)
     model.load_state_dict(original_model['model'])
 
     # 模型转换为jit模式
@@ -131,9 +133,9 @@ def to_jit_model(path,output_dir):
 
 if __name__ == '__main__':
     # training()
-    # to_jit_model(
-    #     r'../data/output/model/model_0099.pt',
-    #     r'./output-jit-model/final'
-    # )
-    model = torch.jit.load(r'./output-jit-model/final/model.pt')
-    print(model)
+    to_jit_model(
+        r'../data/output/model/model_0004.pt',
+        r'./output-jit-model/final'
+    )
+    # model = torch.jit.load(r'./output-jit-model/final/model.pt')
+    # print(model)

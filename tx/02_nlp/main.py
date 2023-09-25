@@ -1,16 +1,18 @@
-# This is a sample Python script.
+import torch
+import torch.nn as nn
+import numpy as np
+import math
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from torch.nn import Module
 
 
-# Press the green button in the gutter to run the script.
+class model(nn.Module):
+    def __init__(self):
+        super(Module, self).__init__()
+    def forword(self,x):
+        print(x)
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    data = torch.tensor([1000,1,3])
+    m = model()
+    m(data)
