@@ -1,0 +1,46 @@
+2023-09-28 10:51:09,397 recall_runner.py 当作召回策略hots执行失败！
+Traceback (most recent call last):
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\recall_runner.py", line 73, in _get_recommend_candidates
+    items = self.hots.get_candidates(k=k * 2)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\recall\hots_recall.py", line 16, in get_candidates
+    return self._get_hot_items(k)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\recall\hots_recall.py", line 20, in _get_hot_items
+    spu_ids = SpuFeatureService.get_hot_ids()  # 获取所有的热映商品id列表
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\services\spu_feature_service.py", line 28, in get_hot_ids
+    ids = SpuFeatureService.get_cache_list_int_v1("rec:hot_spu")
+  File "F:\Code\Inv\Annaconda\envs\CJPPMovie\lib\site-packages\cachetools\__init__.py", line 641, in wrapper
+    v = func(*args, **kwargs)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\services\spu_feature_service.py", line 13, in get_cache_list_int_v1
+    return RedisUtil.get_list_int(key)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 100, in get_list_int
+    _list = RedisUtil.get_list(key, start, end)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 83, in get_list
+    with RedisUtil._get_redis() as client:
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 35, in _get_redis
+    RedisUtil.instance = RedisUtil()
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 19, in __init__
+    self._pool = redis.ConnectionPool(**redis_config.cfg)
+AttributeError: 'NoneType' object has no attribute 'cfg'
+2023-09-28 10:51:09,400 recall_runner.py 当作召回策略news执行失败！
+Traceback (most recent call last):
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\recall_runner.py", line 75, in _get_recommend_candidates
+    items = self.news.get_candidates(k=k * 2)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\recall\news_recall.py", line 20, in get_candidates
+    return self._get_new_items(k)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\recall\news_recall.py", line 24, in _get_new_items
+    spu_ids = SpuFeatureService.get_new_ids()
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\services\spu_feature_service.py", line 39, in get_new_ids
+    ids = SpuFeatureService.get_cache_list_int_v1("rec:new_spu")
+  File "F:\Code\Inv\Annaconda\envs\CJPPMovie\lib\site-packages\cachetools\__init__.py", line 641, in wrapper
+    v = func(*args, **kwargs)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\stategy\services\spu_feature_service.py", line 13, in get_cache_list_int_v1
+    return RedisUtil.get_list_int(key)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 100, in get_list_int
+    _list = RedisUtil.get_list(key, start, end)
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 83, in get_list
+    with RedisUtil._get_redis() as client:
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 35, in _get_redis
+    RedisUtil.instance = RedisUtil()
+  File "F:\Code\PythonBasic\teach\tx\02_nlp\projectSet\MovieRecSystem\src\MovieRecSystem\utils\redis_util.py", line 19, in __init__
+    self._pool = redis.ConnectionPool(**redis_config.cfg)
+AttributeError: 'NoneType' object has no attribute 'cfg'

@@ -1,0 +1,25 @@
+global:
+  model_root_dir: 'xxxxx'
+  use_pai: False
+redis:
+  host: 121.40.96.93
+  port: 6379
+  password: 123456
+  db: 14
+mysql:
+  creator: pymysql
+  maxconnections: 500
+  mincached: 2
+  maxcached: 50
+  blocking: True
+  ping: 1
+  host: 121.40.96.93
+  port: 3306
+  user: gerry
+  password: '123456'
+  database: rec_system
+  charset: utf8
+neo4j:
+  profile: 'bolt://121.40.96.93:7687'
+  user: 'neo4j'
+  password: '123456789'
