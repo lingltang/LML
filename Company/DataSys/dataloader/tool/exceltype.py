@@ -1,5 +1,6 @@
 from typing import Union, List, Tuple
 
+import pandas
 import pandas as pd
 import numpy as np
 from pandas import Timestamp
@@ -47,6 +48,23 @@ def ExcelSTT(strdata:str):
 def DayRange(startDay,number,freq='D'):
     return pd.date_range(startDay, periods=number, freq=freq)
 
+def DayNearByDay(dayPoint:pandas.Timestamp,tCycleNum:int,tCycleDay:int,direction:int=-1):
+    '''
+    本函数用于生成某一时间点，向前或向后的周期时间点
+    :param dayPoint: 时间点
+    :param tCycleNum: 周期个数
+    :param tCycleDay: 周期时长
+    :param direction: 方向，正1为向后推演时间，负1为向前推演时间
+    :param freq: 时间周期
+    :return:
+    '''
+    if(tCycleNum<1):
+        direction*=(-1)
+        tCycleNum*=(-1)
+    addtime = pd.Timedelta(days=tCycleDay)
+    dayList = [dayPoint+addtime*direction*i for i in range(tCycleNum)]
+    return dayList
+
 # 时间差计算
 def Subtime(startTime:pd.Timestamp,endTime:pd.Timestamp,tla = 'm'):
     tl = (endTime-startTime).to_numpy().item().total_seconds()
@@ -87,16 +105,16 @@ def CyclesDay(startTime:pd.Timestamp,endTime:pd.Timestamp,addCycle=1,instartdata
         if shour != 0 or sminute != 0 or ssecond != 0:
             if instartdata:
                 startTime += addTime
-                instartdata = not instartdata
         while startTime < endTime:
             cdls.append(startTime)
             startTime += addTime
         if inenddata:
-            cdls.append(startTime)
+            if startTime>endTime:
+                cdls.append(startTime)
     return cdls
 
 #################################################################################
-
+# 列出数据某一类数据类型的统计
 def ColTypes(data,colname):
     typesnum = dict()
     for i in data[colname]:
@@ -109,7 +127,8 @@ def ColTypes(data,colname):
 
 
 if __name__ == '__main__':
-    tx = CyclesDay(STT(2023,10,1),STT(2023,11,1),23)
-    for i in tx:
-        print(i)
+    print(np.zeros(7))
+    # tx = DayNearByDay(STT(2024,1,1),2,7)
+    # for i in tx:
+    #     print(i)
     # print(tx)
